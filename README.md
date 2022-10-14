@@ -2,7 +2,7 @@
 PostgreSQL integration with WEB-services (PL/Python -> HTTP method GET,POST and send e-mail, PL/pgSQL -> JSON, XML, CSV).
 Add JSON Data Type (table, jsonb_path_query, json_build_object)
 
-DB PostgreSQL 15 + Python 3.10
+PostgreSQL 15 + Python 3.10
 IDE - DBeaver
 ---------------------------------------------------------------------------------
 Установка и настройка:

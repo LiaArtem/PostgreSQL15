@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION p_convert.str_to_num(p_text character varying)
  STABLE
 AS $function$
 DECLARE
-    -- Преобразование теста с число
+    -- РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ С‚РµСЃС‚Р° СЃ С‡РёСЃР»Рѕ
     m_text varchar(32000);
 
 begin
@@ -16,7 +16,7 @@ begin
     return(to_number(trim(both m_text), '999999999999999999999999999999.99999999999999999999999999999'));
   exception when others
   then
-     RAISE EXCEPTION '%', 'Невозможно преобразовать в число ="'||p_text||'"' USING ERRCODE = '45000';
+     RAISE EXCEPTION '%', 'РќРµРІРѕР·РјРѕР¶РЅРѕ РїСЂРµРѕР±СЂР°Р·РѕРІР°С‚СЊ РІ С‡РёСЃР»Рѕ ="'||p_text||'"' USING ERRCODE = '45000';
   end;
  
 $function$

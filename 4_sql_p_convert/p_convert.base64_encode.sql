@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION p_convert.base64_encode(p_value text)
  STABLE
 AS $function$
 DECLARE
-  -- Преобразование в base64
+  -- РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІ base64
     m_result text;
 begin
     if p_value is null then return null; end if;    

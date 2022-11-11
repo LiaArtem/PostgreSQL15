@@ -4,7 +4,7 @@
 
 CREATE OR REPLACE FUNCTION p_interface.read_kurs_nbu(
 	p_date timestamp without time zone,
-	p_format text,
+	p_format character varying,
 	p_currency text DEFAULT NULL::text)
     RETURNS TABLE(r030 character varying, txt character varying, rate numeric, cc character varying, exchangedate timestamp without time zone) 
     LANGUAGE 'plpgsql'

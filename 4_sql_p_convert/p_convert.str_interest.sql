@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION p_convert.str_interest(p_amount numeric)
  STABLE
 AS $function$
 DECLARE
-    -- Преобразование процента с тест (0,5678999% (нуль цiлих i п'ять мiльйонiв шiстсот сiмдесят вiсiм тисяч дев'ятсот дев'яносто дев'ять десятимільйонних процента))
+    -- РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РїСЂРѕС†РµРЅС‚Р° СЃ С‚РµСЃС‚ (0,5678999% (РЅСѓР»СЊ С†iР»РёС… i Рї'СЏС‚СЊ РјiР»СЊР№РѕРЅiРІ С€iСЃС‚СЃРѕС‚ СЃiРјРґРµСЃСЏС‚ РІiСЃiРј С‚РёСЃСЏС‡ РґРµРІ'СЏС‚СЃРѕС‚ РґРµРІ'СЏРЅРѕСЃС‚Рѕ РґРµРІ'СЏС‚СЊ РґРµСЃСЏС‚РёРјС–Р»СЊР№РѕРЅРЅРёС… РїСЂРѕС†РµРЅС‚Р°))
     p_result      varchar(255) := '';
     Fraction      numeric;
     FractionType  varchar(255);
@@ -17,33 +17,33 @@ BEGIN
     FractionT := substr(p_convert.num_to_str(Fraction),3);
     FractionFM := 'FM999,999,999,990.00';
     if    length(FractionT) = 1 then
-             FractionType := 'десятих';
+             FractionType := 'РґРµСЃСЏС‚РёС…';
              Fraction := Fraction * 10;
     elsif length(FractionT) = 2 then 
-             FractionType := 'сотих';
+             FractionType := 'СЃРѕС‚РёС…';
              Fraction := Fraction * 100;
     elsif length(FractionT) = 3 then
-             FractionType := 'тисячних';
+             FractionType := 'С‚РёСЃСЏС‡РЅРёС…';
              Fraction := Fraction * 1000;
              FractionFM := 'FM999,999,999,990.000';
     elsif length(FractionT) = 4 then 
-             FractionType := 'десятитисячних';
+             FractionType := 'РґРµСЃСЏС‚РёС‚РёСЃСЏС‡РЅРёС…';
              Fraction := Fraction * 10000;
              FractionFM := 'FM999,999,999,990.0000';
     elsif length(FractionT) = 5 then 
-             FractionType := 'стотисячних';
+             FractionType := 'СЃС‚РѕС‚РёСЃСЏС‡РЅРёС…';
              Fraction := Fraction * 100000;
              FractionFM := 'FM999,999,999,990.00000';
     elsif length(FractionT) = 6 then 
-             FractionType := 'мільйонних';
+             FractionType := 'РјС–Р»СЊР№РѕРЅРЅРёС…';
              Fraction := Fraction * 1000000;
              FractionFM := 'FM999,999,999,990.000000';
     elsif length(FractionT) = 7 then 
-             FractionType := 'десятимільйонних';
+             FractionType := 'РґРµСЃСЏС‚РёРјС–Р»СЊР№РѕРЅРЅРёС…';
              Fraction := Fraction * 10000000;
              FractionFM := 'FM999,999,999,990.0000000';
     elsif length(FractionT) = 8 then 
-             FractionType := 'стомільйонних';
+             FractionType := 'СЃС‚РѕРјС–Р»СЊР№РѕРЅРЅРёС…';
              Fraction := Fraction * 100000000;
              FractionFM := 'FM999,999,999,990.00000000';
     elsif length(FractionT) > 8 
@@ -55,13 +55,13 @@ BEGIN
     then
       p_result := trim(both to_char(p_amount, FractionFM))||'% ('||p_convert.str_amount(p_amount, 'F');
 
-      -- добавляем
+      -- РґРѕР±Р°РІР»СЏРµРј
       p_last_amount := (substr(p_amount::varchar, -1, 1))::numeric;
-      if (p_last_amount in (0,5,6,7,8,9) or p_amount in (11,12,13,14,15,16,17,18,19)) then p_result := p_result||' процентiв)';
-      elsif p_last_amount = 1 then p_result := p_result||' процент)';
-      elsif p_last_amount in (2,3,4) then p_result := p_result||' процента)';
+      if (p_last_amount in (0,5,6,7,8,9) or p_amount in (11,12,13,14,15,16,17,18,19)) then p_result := p_result||' РїСЂРѕС†РµРЅС‚iРІ)';
+      elsif p_last_amount = 1 then p_result := p_result||' РїСЂРѕС†РµРЅС‚)';
+      elsif p_last_amount in (2,3,4) then p_result := p_result||' РїСЂРѕС†РµРЅС‚Р°)';
       else
-         p_result := p_result||' процента)';
+         p_result := p_result||' РїСЂРѕС†РµРЅС‚Р°)';
       end if;
 
     else
@@ -69,28 +69,28 @@ BEGIN
 
       if trunc(p_amount) = 1
       then
-         p_result := p_result||' цiла i '||lower(p_convert.str_amount(Fraction))||' '||FractionType;
+         p_result := p_result||' С†iР»Р° i '||lower(p_convert.str_amount(Fraction))||' '||FractionType;
       else
-         p_result := p_result||' цiлих i '||lower(p_convert.str_amount(Fraction))||' '||FractionType;
+         p_result := p_result||' С†iР»РёС… i '||lower(p_convert.str_amount(Fraction))||' '||FractionType;
       end if;
 
-      p_result := p_result||' процента)';
+      p_result := p_result||' РїСЂРѕС†РµРЅС‚Р°)';
     end if;
 
     p_result := lower(p_result);
 
-    -- замена
+    -- Р·Р°РјРµРЅР°
     if FractionType is not null and substr(p_convert.num_to_str(p_amount),-1) = '1'
         and substr(p_convert.num_to_str(p_amount),-2) != '11'
     then
-        if    length(FractionT) = 1 then p_result := replace(p_result, 'десятих', 'десята');
-        elsif length(FractionT) = 2 then p_result := replace(p_result, 'сотих', 'сота');
-        elsif length(FractionT) = 3 then p_result := replace(p_result, 'тисячних', 'тисячна');
-        elsif length(FractionT) = 4 then p_result := replace(p_result, 'десятитисячних', 'десятитисячна');
-        elsif length(FractionT) = 5 then p_result := replace(p_result, 'стотисячних', 'стотисячна');
-        elsif length(FractionT) = 6 then p_result := replace(p_result, 'мільйонних', 'мільйонна');
-        elsif length(FractionT) = 7 then p_result := replace(p_result, 'десятимільйонних', 'десятимільйонна');
-        elsif length(FractionT) = 8 then p_result := replace(p_result, 'стомільйонних', 'стомільйонна');
+        if    length(FractionT) = 1 then p_result := replace(p_result, 'РґРµСЃСЏС‚РёС…', 'РґРµСЃСЏС‚Р°');
+        elsif length(FractionT) = 2 then p_result := replace(p_result, 'СЃРѕС‚РёС…', 'СЃРѕС‚Р°');
+        elsif length(FractionT) = 3 then p_result := replace(p_result, 'С‚РёСЃСЏС‡РЅРёС…', 'С‚РёСЃСЏС‡РЅР°');
+        elsif length(FractionT) = 4 then p_result := replace(p_result, 'РґРµСЃСЏС‚РёС‚РёСЃСЏС‡РЅРёС…', 'РґРµСЃСЏС‚РёС‚РёСЃСЏС‡РЅР°');
+        elsif length(FractionT) = 5 then p_result := replace(p_result, 'СЃС‚РѕС‚РёСЃСЏС‡РЅРёС…', 'СЃС‚РѕС‚РёСЃСЏС‡РЅР°');
+        elsif length(FractionT) = 6 then p_result := replace(p_result, 'РјС–Р»СЊР№РѕРЅРЅРёС…', 'РјС–Р»СЊР№РѕРЅРЅР°');
+        elsif length(FractionT) = 7 then p_result := replace(p_result, 'РґРµСЃСЏС‚РёРјС–Р»СЊР№РѕРЅРЅРёС…', 'РґРµСЃСЏС‚РёРјС–Р»СЊР№РѕРЅРЅР°');
+        elsif length(FractionT) = 8 then p_result := replace(p_result, 'СЃС‚РѕРјС–Р»СЊР№РѕРЅРЅРёС…', 'СЃС‚РѕРјС–Р»СЊР№РѕРЅРЅР°');
         end if;
     end if;
 

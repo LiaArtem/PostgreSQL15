@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION p_convert.str_amount_curr(p_amount numeric, p_curr_co
  STABLE
 AS $function$
 DECLARE
-    -- Ïðåîáðàçîâàíèå ñóììû â òåêñò (ñ âàëþòîé)
+    -- ÐŸÑ€ÐµÐ¾Ð±Ñ€Ð°Ð·Ð¾Ð²Ð°Ð½Ð¸Ðµ ÑÑƒÐ¼Ð¼Ñ‹ Ð² Ñ‚ÐµÐºÑÑ‚ (Ñ Ð²Ð°Ð»ÑŽÑ‚Ð¾Ð¹)
     dig       varchar(255)[];
     dig_a     varchar(255)[];
     ten       varchar(255)[];
@@ -28,139 +28,139 @@ begin
     OriginVal := CurrValue;
     Fraction  := trunc((p_amount - CurrValue) * 100);
 
-    -- òûñÿ÷è
-    tis[0] := 'òèñÿ÷ ';
-    tis[1] := 'òèñÿ÷à ';
-    tis[2] := 'òèñÿ÷i ';
-    tis[3] := 'òèñÿ÷i ';
-    tis[4] := 'òèñÿ÷i ';
-    tis[5] := 'òèñÿ÷ ';
-    tis[6] := 'òèñÿ÷ ';
-    tis[7] := 'òèñÿ÷ ';
-    tis[8] := 'òèñÿ÷ ';
-    tis[9] := 'òèñÿ÷ ';
-    tis[10] := 'òèñÿ÷ ';
-    tis[11] := 'òèñÿ÷ ';
-    tis[12] := 'òèñÿ÷ ';
-    tis[13] := 'òèñÿ÷ ';
-    tis[14] := 'òèñÿ÷ ';
-    tis[15] := 'òèñÿ÷ ';
-    tis[16] := 'òèñÿ÷ ';
-    tis[17] := 'òèñÿ÷ ';
-    tis[18] := 'òèñÿ÷ ';
-    tis[19] := 'òèñÿ÷ ';
+    -- Ñ‚Ñ‹ÑÑÑ‡Ð¸
+    tis[0] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[1] := 'Ñ‚Ð¸ÑÑÑ‡Ð° ';
+    tis[2] := 'Ñ‚Ð¸ÑÑÑ‡i ';
+    tis[3] := 'Ñ‚Ð¸ÑÑÑ‡i ';
+    tis[4] := 'Ñ‚Ð¸ÑÑÑ‡i ';
+    tis[5] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[6] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[7] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[8] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[9] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[10] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[11] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[12] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[13] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[14] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[15] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[16] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[17] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[18] := 'Ñ‚Ð¸ÑÑÑ‡ ';
+    tis[19] := 'Ñ‚Ð¸ÑÑÑ‡ ';
 
-    -- ìiëüéîí
-    mln[0] := 'ìiëüéîíiâ ';
-    mln[1] := 'ìiëüéîí ';
-    mln[2] := 'ìiëüéîíà ';
-    mln[3] := 'ìiëüéîíà ';
-    mln[4] := 'ìiëüéîíà ';
-    mln[5] := 'ìiëüéîíiâ ';
-    mln[6] := 'ìiëüéîíiâ ';
-    mln[7] := 'ìiëüéîíiâ ';
-    mln[8] := 'ìiëüéîíiâ ';
-    mln[9] := 'ìiëüéîíiâ ';
-    mln[10] := 'ìiëüéîíiâ ';
-    mln[11] := 'ìiëüéîíiâ ';
-    mln[12] := 'ìiëüéîíiâ ';
-    mln[13] := 'ìiëüéîíiâ ';
-    mln[14] := 'ìiëüéîíiâ ';
-    mln[15] := 'ìiëüéîíiâ ';
-    mln[16] := 'ìiëüéîíiâ ';
-    mln[17] := 'ìiëüéîíiâ ';
-    mln[18] := 'ìiëüéîíiâ ';
-    mln[19] := 'ìiëüéîíiâ ';
+    -- Ð¼iÐ»ÑŒÐ¹Ð¾Ð½
+    mln[0] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[1] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½ ';
+    mln[2] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½Ð° ';
+    mln[3] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½Ð° ';
+    mln[4] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½Ð° ';
+    mln[5] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[6] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[7] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[8] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[9] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[10] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[11] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[12] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[13] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[14] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[15] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[16] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[17] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[18] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
+    mln[19] := 'Ð¼iÐ»ÑŒÐ¹Ð¾Ð½iÐ² ';
 
-    -- ìiëüÿðäiâ
+    -- Ð¼iÐ»ÑŒÑÑ€Ð´iÐ²
     mlrd[0] := ' ';
-    mlrd[1] := 'ìiëüÿðä ';
-    mlrd[2] := 'ìiëüÿðäà ';
-    mlrd[3] := 'ìiëüÿðäà ';
-    mlrd[4] := 'ìiëüÿðäà ';
-    mlrd[5] := 'ìiëüÿðäiâ ';
-    mlrd[6] := 'ìiëüÿðäiâ ';
-    mlrd[7] := 'ìiëüÿðäiâ ';
-    mlrd[8] := 'ìiëüÿðäiâ ';
-    mlrd[9] := 'ìiëüÿðäiâ ';
-    mlrd[10] := 'ìiëüÿðäiâ ';
-    mlrd[11] := 'ìiëüÿðäiâ ';
-    mlrd[12] := 'ìiëüÿðäiâ ';
-    mlrd[13] := 'ìiëüÿðäiâ ';
-    mlrd[14] := 'ìiëüÿðäiâ ';
-    mlrd[15] := 'ìiëüÿðäiâ ';
-    mlrd[16] := 'ìiëüÿðäiâ ';
-    mlrd[17] := 'ìiëüÿðäiâ ';
-    mlrd[18] := 'ìiëüÿðäiâ ';
-    mlrd[19] := 'ìiëüÿðäiâ ';
+    mlrd[1] := 'Ð¼iÐ»ÑŒÑÑ€Ð´ ';
+    mlrd[2] := 'Ð¼iÐ»ÑŒÑÑ€Ð´Ð° ';
+    mlrd[3] := 'Ð¼iÐ»ÑŒÑÑ€Ð´Ð° ';
+    mlrd[4] := 'Ð¼iÐ»ÑŒÑÑ€Ð´Ð° ';
+    mlrd[5] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[6] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[7] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[8] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[9] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[10] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[11] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[12] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[13] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[14] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[15] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[16] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[17] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[18] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
+    mlrd[19] := 'Ð¼iÐ»ÑŒÑÑ€Ð´iÐ² ';
 
     Dig[0] := '';
-    dig[1] := 'îäèí ';
-    dig[2] := 'äâà ';
-    dig[3] := 'òðè ';
-    dig[4] := '÷îòèðè ';
-    dig[5] := 'ï''ÿòü ';
-    dig[6] := 'øiñòü ';
-    dig[7] := 'ñiì ';
-    dig[8] := 'âiñiì ';
-    dig[9] := 'äåâ''ÿòü ';
-    dig[10] := 'äåñÿòü ';
-    dig[11] := 'îäèíàäöÿòü ';
-    dig[12] := 'äâàíàäöÿòü ';
-    dig[13] := 'òðèíàäöÿòü ';
-    dig[14] := '÷îòèðíàäöÿòü ';
-    dig[15] := 'ï''ÿòíàäöÿòü ';
-    dig[16] := 'øiñòíàäöÿòü ';
-    dig[17] := 'ñiìíàäöÿòü ';
-    dig[18] := 'âiñiìíàäöÿòü ';
-    dig[19] := 'äåâ''ÿòíàäöÿòü ';
+    dig[1] := 'Ð¾Ð´Ð¸Ð½ ';
+    dig[2] := 'Ð´Ð²Ð° ';
+    dig[3] := 'Ñ‚Ñ€Ð¸ ';
+    dig[4] := 'Ñ‡Ð¾Ñ‚Ð¸Ñ€Ð¸ ';
+    dig[5] := 'Ð¿''ÑÑ‚ÑŒ ';
+    dig[6] := 'ÑˆiÑÑ‚ÑŒ ';
+    dig[7] := 'ÑiÐ¼ ';
+    dig[8] := 'Ð²iÑiÐ¼ ';
+    dig[9] := 'Ð´ÐµÐ²''ÑÑ‚ÑŒ ';
+    dig[10] := 'Ð´ÐµÑÑÑ‚ÑŒ ';
+    dig[11] := 'Ð¾Ð´Ð¸Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig[12] := 'Ð´Ð²Ð°Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig[13] := 'Ñ‚Ñ€Ð¸Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig[14] := 'Ñ‡Ð¾Ñ‚Ð¸Ñ€Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig[15] := 'Ð¿''ÑÑ‚Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig[16] := 'ÑˆiÑÑ‚Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig[17] := 'ÑiÐ¼Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig[18] := 'Ð²iÑiÐ¼Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig[19] := 'Ð´ÐµÐ²''ÑÑ‚Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
 
     Dig_a[0] := '';
-    dig_a[1] := 'îäèí ';
-    dig_a[2] := 'äâà ';
-    dig_a[3] := 'òðè ';
-    dig_a[4] := '÷îòèðè ';
-    dig_a[5] := 'ï''ÿòü ';
-    dig_a[6] := 'øiñòü ';
-    dig_a[7] := 'ñiì ';
-    dig_a[8] := 'âiñiì ';
-    dig_a[9] := 'äåâ''ÿòü ';
-    dig_a[10] := 'äåñÿòü ';
-    dig_a[11] := 'îäèíàäöÿòü ';
-    dig_a[12] := 'äâàíàäöÿòü ';
-    dig_a[13] := 'òðèíàäöÿòü ';
-    dig_a[14] := '÷îòèðíàäöÿòü ';
-    dig_a[15] := 'ï''ÿòíàäöÿòü ';
-    dig_a[16] := 'øiñòíàäöÿòü ';
-    dig_a[17] := 'ñiìíàäöÿòü ';
-    dig_a[18] := 'âiñiìíàäöÿòü ';
-    dig_a[19] := 'äåâ''ÿòíàäöÿòü ';
+    dig_a[1] := 'Ð¾Ð´Ð¸Ð½ ';
+    dig_a[2] := 'Ð´Ð²Ð° ';
+    dig_a[3] := 'Ñ‚Ñ€Ð¸ ';
+    dig_a[4] := 'Ñ‡Ð¾Ñ‚Ð¸Ñ€Ð¸ ';
+    dig_a[5] := 'Ð¿''ÑÑ‚ÑŒ ';
+    dig_a[6] := 'ÑˆiÑÑ‚ÑŒ ';
+    dig_a[7] := 'ÑiÐ¼ ';
+    dig_a[8] := 'Ð²iÑiÐ¼ ';
+    dig_a[9] := 'Ð´ÐµÐ²''ÑÑ‚ÑŒ ';
+    dig_a[10] := 'Ð´ÐµÑÑÑ‚ÑŒ ';
+    dig_a[11] := 'Ð¾Ð´Ð¸Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig_a[12] := 'Ð´Ð²Ð°Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig_a[13] := 'Ñ‚Ñ€Ð¸Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig_a[14] := 'Ñ‡Ð¾Ñ‚Ð¸Ñ€Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig_a[15] := 'Ð¿''ÑÑ‚Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig_a[16] := 'ÑˆiÑÑ‚Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig_a[17] := 'ÑiÐ¼Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig_a[18] := 'Ð²iÑiÐ¼Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    dig_a[19] := 'Ð´ÐµÐ²''ÑÑ‚Ð½Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
 
     ten[0] := '';
     ten[1] := '';
-    ten[2] := 'äâàäöÿòü ';
-    ten[3] := 'òðèäöÿòü ';
-    ten[4] := 'ñîðîê ';
-    ten[5] := 'ï''ÿòäåñÿò ';
-    ten[6] := 'øiñòäåñÿò ';
-    ten[7] := 'ñiìäåñÿò ';
-    ten[8] := 'âiñiìäåñÿò ';
-    ten[9] := 'äåâ''ÿíîñòî ';
+    ten[2] := 'Ð´Ð²Ð°Ð´Ñ†ÑÑ‚ÑŒ ';
+    ten[3] := 'Ñ‚Ñ€Ð¸Ð´Ñ†ÑÑ‚ÑŒ ';
+    ten[4] := 'ÑÐ¾Ñ€Ð¾Ðº ';
+    ten[5] := 'Ð¿''ÑÑ‚Ð´ÐµÑÑÑ‚ ';
+    ten[6] := 'ÑˆiÑÑ‚Ð´ÐµÑÑÑ‚ ';
+    ten[7] := 'ÑiÐ¼Ð´ÐµÑÑÑ‚ ';
+    ten[8] := 'Ð²iÑiÐ¼Ð´ÐµÑÑÑ‚ ';
+    ten[9] := 'Ð´ÐµÐ²''ÑÐ½Ð¾ÑÑ‚Ð¾ ';
 
     Hun[0] := '';
-    Hun[1] := 'ñòî ';
-    Hun[2] := 'äâiñòi ';
-    Hun[3] := 'òðèñòà ';
-    Hun[4] := '÷îòèðèñòà ';
-    Hun[5] := 'ï''ÿòñîò ';
-    Hun[6] := 'øiñòñîò ';
-    Hun[7] := 'ñiìñîò ';
-    Hun[8] := 'âiñiìñîò ';
-    Hun[9] := 'äåâ''ÿòñîò ';
+    Hun[1] := 'ÑÑ‚Ð¾ ';
+    Hun[2] := 'Ð´Ð²iÑÑ‚i ';
+    Hun[3] := 'Ñ‚Ñ€Ð¸ÑÑ‚Ð° ';
+    Hun[4] := 'Ñ‡Ð¾Ñ‚Ð¸Ñ€Ð¸ÑÑ‚Ð° ';
+    Hun[5] := 'Ð¿''ÑÑ‚ÑÐ¾Ñ‚ ';
+    Hun[6] := 'ÑˆiÑÑ‚ÑÐ¾Ñ‚ ';
+    Hun[7] := 'ÑiÐ¼ÑÐ¾Ñ‚ ';
+    Hun[8] := 'Ð²iÑiÐ¼ÑÐ¾Ñ‚ ';
+    Hun[9] := 'Ð´ÐµÐ²''ÑÑ‚ÑÐ¾Ñ‚ ';
 
     if Currvalue = 0
     then
-      p_result := 'Íóëü ';
+      p_result := 'ÐÑƒÐ»ÑŒ ';
     else
       while CurrValue > 0
       loop
@@ -238,169 +238,169 @@ begin
     end if;
 
     if p_is_decimal = 'T' then
-      p_result := p_result || ' öiëèõ ' || to_char(fraction, '00') || ' ñîòèõ';
+      p_result := p_result || ' Ñ†iÐ»Ð¸Ñ… ' || to_char(fraction, '00') || ' ÑÐ¾Ñ‚Ð¸Ñ…';
     else
       if (upper(p_curr_code) = 'UAH') or (trim(both p_curr_code) is null) then
         CResult := OriginVal::varchar;
         l       := length(CResult);
         if ((l > 1) and ((substr(CResult, l - 1, 2))::numeric  > 10) and ((substr(CResult, l - 1, 2))::numeric  < 20)) then
-          p_result := p_result || ' ãðèâåíü';
+          p_result := p_result || ' Ð³Ñ€Ð¸Ð²ÐµÐ½ÑŒ';
         elsif (substr(CResult, l, 1))::numeric  = 0 then
-          p_result := p_result || ' ãðèâåíü';
+          p_result := p_result || ' Ð³Ñ€Ð¸Ð²ÐµÐ½ÑŒ';
         elsif (substr(CResult, l, 1))::numeric  = 1 then
-          p_result := p_result || ' ãðèâíÿ';
+          p_result := p_result || ' Ð³Ñ€Ð¸Ð²Ð½Ñ';
         elsif ((substr(CResult, l, 1))::numeric  = 2) or ((substr(CResult, l, 1))::numeric  = 3) or ((substr(CResult, l, 1))::numeric  = 4) then
-          p_result := p_result || ' ãðèâí³';
+          p_result := p_result || ' Ð³Ñ€Ð¸Ð²Ð½Ñ–';
         else
-          p_result := p_result || ' ãðèâåíü';
+          p_result := p_result || ' Ð³Ñ€Ð¸Ð²ÐµÐ½ÑŒ';
         end if;
   ------------------------------------------------------------------
         if substr(fraction::varchar,1,2) in ('01','21','31','41','51','61','71','81','91') then
-          p_result := p_result || to_char(fraction, '00') || ' êîï³éêà';
+          p_result := p_result || to_char(fraction, '00') || ' ÐºÐ¾Ð¿Ñ–Ð¹ÐºÐ°';
         elsif substr(fraction::varchar,1,2) in ('02','03','04','22','23','24','32','33','34',
                                                 '42','43','44','52','53','54','62','63','64',
                                                 '72','73','74','82','83','84','92','93','94') then
-          p_result := p_result || to_char(fraction, '00') || ' êîï³éêè';
+          p_result := p_result || to_char(fraction, '00') || ' ÐºÐ¾Ð¿Ñ–Ð¹ÐºÐ¸';
         else
-          p_result := p_result || to_char(fraction, '00') || ' êîï³éîê';
+          p_result := p_result || to_char(fraction, '00') || ' ÐºÐ¾Ð¿Ñ–Ð¹Ð¾Ðº';
         end if;
   ------------------------------------------------------------------
       elsif (upper(p_curr_code) = 'USD') then
         CResult := OriginVal::varchar;
         l       := length(CResult);
         if ((l > 1) and ((substr(CResult, l - 1, 2))::numeric  > 10) and ((substr(CResult, l - 1, 2))::numeric  < 20)) then
-          p_result := p_result || ' äîëàðiâ ÑØÀ';
+          p_result := p_result || ' Ð´Ð¾Ð»Ð°Ñ€iÐ² Ð¡Ð¨Ð';
         elsif (substr(CResult, l, 1))::numeric  = 0 then
-          p_result := p_result || ' äîëàðiâ ÑØÀ';
+          p_result := p_result || ' Ð´Ð¾Ð»Ð°Ñ€iÐ² Ð¡Ð¨Ð';
         elsif (substr(CResult, l, 1))::numeric  = 1 then
-          p_result := p_result || ' äîëàð ÑØÀ';
+          p_result := p_result || ' Ð´Ð¾Ð»Ð°Ñ€ Ð¡Ð¨Ð';
         elsif ((substr(CResult, l, 1))::numeric  = 2) or ((substr(CResult, l, 1))::numeric  = 3) or ((substr(CResult, l, 1))::numeric  = 4) then
-          p_result := p_result || ' äîëàðè ÑØÀ';
+          p_result := p_result || ' Ð´Ð¾Ð»Ð°Ñ€Ð¸ Ð¡Ð¨Ð';
         else
-          p_result := p_result || ' äîëàðiâ ÑØÀ';
+          p_result := p_result || ' Ð´Ð¾Ð»Ð°Ñ€iÐ² Ð¡Ð¨Ð';
         end if;
   ------------------------------------------------------------------
         if substr(fraction::varchar,1,2) in ('01','21','31','41','51','61','71','81','91') then
-          p_result := p_result || to_char(fraction, '00') || ' öåíò';
+          p_result := p_result || to_char(fraction, '00') || ' Ñ†ÐµÐ½Ñ‚';
         elsif substr(fraction::varchar,1,2) in ('02','03','04','22','23','24','32','33','34',
                                                 '42','43','44','52','53','54','62','63','64',
                                                 '72','73','74','82','83','84','92','93','94') then
-          p_result := p_result || to_char(fraction, '00') || ' öåíòè';
+          p_result := p_result || to_char(fraction, '00') || ' Ñ†ÐµÐ½Ñ‚Ð¸';
         else
-          p_result := p_result || to_char(fraction, '00') || ' öåíòiâ';
+          p_result := p_result || to_char(fraction, '00') || ' Ñ†ÐµÐ½Ñ‚iÐ²';
         end if;
   ------------------------------------------------------------------
         elsif (upper(p_curr_code) = 'EUR') then
-          p_result := p_result || ' ºâðî ';
+          p_result := p_result || ' Ñ”Ð²Ñ€Ð¾ ';
   ------------------------------------------------------------------
         if substr(fraction::varchar,1,2) in ('01','21','31','41','51','61','71','81','91') then
-          p_result := p_result || to_char(fraction, '00') || ' ºâðîöåíò';
+          p_result := p_result || to_char(fraction, '00') || ' Ñ”Ð²Ñ€Ð¾Ñ†ÐµÐ½Ñ‚';
         elsif substr(fraction::varchar,1,2) in ('02','03','04','22','23','24','32','33','34',
                                                 '42','43','44','52','53','54','62','63','64',
                                                 '72','73','74','82','83','84','92','93','94') then
-          p_result := p_result || to_char(fraction, '00') || ' ºâðîöåíòè';
+          p_result := p_result || to_char(fraction, '00') || ' Ñ”Ð²Ñ€Ð¾Ñ†ÐµÐ½Ñ‚Ð¸';
         else
-          p_result := p_result || to_char(fraction, '00') || ' ºâðîöåíòiâ';
+          p_result := p_result || to_char(fraction, '00') || ' Ñ”Ð²Ñ€Ð¾Ñ†ÐµÐ½Ñ‚iÐ²';
         end if;
   ------------------------------------------------------------------
         elsif (upper(p_curr_code) = 'GBP') then
           CResult := OriginVal::varchar;
           l       := length(CResult);
         if ((l > 1) and ((substr(CResult, l - 1, 2))::numeric  > 10) and ((substr(CResult, l - 1, 2))::numeric  < 20)) then
-          p_result := p_result || ' àíãë³éñüêèõ Ôóíò³â ñòåðë³íã³â';
+          p_result := p_result || ' Ð°Ð½Ð³Ð»Ñ–Ð¹ÑÑŒÐºÐ¸Ñ… Ð¤ÑƒÐ½Ñ‚Ñ–Ð² ÑÑ‚ÐµÑ€Ð»Ñ–Ð½Ð³Ñ–Ð²';
         elsif (substr(CResult, l, 1))::numeric  = 0 then
-          p_result := p_result || ' àíãë³éñüêèõ Ôóíò³â ñòåðë³íã³â';
+          p_result := p_result || ' Ð°Ð½Ð³Ð»Ñ–Ð¹ÑÑŒÐºÐ¸Ñ… Ð¤ÑƒÐ½Ñ‚Ñ–Ð² ÑÑ‚ÐµÑ€Ð»Ñ–Ð½Ð³Ñ–Ð²';
         elsif (substr(CResult, l, 1))::numeric  = 1 then
-          p_result := p_result || ' àíãë³éñüêèõ Ôóíò ñòåðë³íã³â';
+          p_result := p_result || ' Ð°Ð½Ð³Ð»Ñ–Ð¹ÑÑŒÐºÐ¸Ñ… Ð¤ÑƒÐ½Ñ‚ ÑÑ‚ÐµÑ€Ð»Ñ–Ð½Ð³Ñ–Ð²';
         elsif ((substr(CResult, l, 1))::numeric  = 2) or ((substr(CResult, l, 1))::numeric  = 3) or ((substr(CResult, l, 1))::numeric  = 4) then
-          p_result := p_result || ' àíãë³éñüêèõ Ôóíòè ñòåðë³íã³â';
+          p_result := p_result || ' Ð°Ð½Ð³Ð»Ñ–Ð¹ÑÑŒÐºÐ¸Ñ… Ð¤ÑƒÐ½Ñ‚Ð¸ ÑÑ‚ÐµÑ€Ð»Ñ–Ð½Ð³Ñ–Ð²';
         else
-          p_result := p_result || ' àíãë³éñüêèõ Ôóíò³â ñòåðë³íã³â';
+          p_result := p_result || ' Ð°Ð½Ð³Ð»Ñ–Ð¹ÑÑŒÐºÐ¸Ñ… Ð¤ÑƒÐ½Ñ‚Ñ–Ð² ÑÑ‚ÐµÑ€Ð»Ñ–Ð½Ð³Ñ–Ð²';
         end if;
   ------------------------------------------------------------------
         if substr(fraction::varchar,1,2) in ('01','21','31','41','51','61','71','81','91') then
-          p_result := p_result || to_char(fraction, '00') || ' ïåíñ';
+          p_result := p_result || to_char(fraction, '00') || ' Ð¿ÐµÐ½Ñ';
         elsif substr(fraction::varchar,1,2) in ('02','03','04','22','23','24','32','33','34',
                                                 '42','43','44','52','53','54','62','63','64',
                                                 '72','73','74','82','83','84','92','93','94') then
-          p_result := p_result || to_char(fraction, '00') || ' ïåíñè';
+          p_result := p_result || to_char(fraction, '00') || ' Ð¿ÐµÐ½ÑÐ¸';
         else
-          p_result := p_result || to_char(fraction, '00') || ' ïåíñiâ';
+          p_result := p_result || to_char(fraction, '00') || ' Ð¿ÐµÐ½ÑiÐ²';
         end if;
   ------------------------------------------------------------------
         elsif (upper(p_curr_code) = 'CHF') then
           CResult := OriginVal::varchar;
           l       := length(CResult);
         if ((l > 1) and ((substr(CResult, l - 1, 2))::numeric  > 10) and ((substr(CResult, l - 1, 2))::numeric  < 20)) then
-          p_result := p_result || ' øâåéöàðñüêèõ ôðàíê³â';
+          p_result := p_result || ' ÑˆÐ²ÐµÐ¹Ñ†Ð°Ñ€ÑÑŒÐºÐ¸Ñ… Ñ„Ñ€Ð°Ð½ÐºÑ–Ð²';
         elsif (substr(CResult, l, 1))::numeric  = 0 then
-          p_result := p_result || ' øâåéöàðñüêèõ ôðàíê³â';
+          p_result := p_result || ' ÑˆÐ²ÐµÐ¹Ñ†Ð°Ñ€ÑÑŒÐºÐ¸Ñ… Ñ„Ñ€Ð°Ð½ÐºÑ–Ð²';
         elsif (substr(CResult, l, 1))::numeric  = 1 then
-          p_result := p_result || ' øâåéöàðñüêèé ôðàíê';
+          p_result := p_result || ' ÑˆÐ²ÐµÐ¹Ñ†Ð°Ñ€ÑÑŒÐºÐ¸Ð¹ Ñ„Ñ€Ð°Ð½Ðº';
         elsif ((substr(CResult, l, 1))::numeric  = 2) or ((substr(CResult, l, 1))::numeric  = 3) or ((substr(CResult, l, 1))::numeric  = 4) then
-          p_result := p_result || ' øâåéöàðñüêèõ ôðàíêè';
+          p_result := p_result || ' ÑˆÐ²ÐµÐ¹Ñ†Ð°Ñ€ÑÑŒÐºÐ¸Ñ… Ñ„Ñ€Ð°Ð½ÐºÐ¸';
         else
-          p_result := p_result || ' øâåéöàðñüêèõ ôðàíê³â';
+          p_result := p_result || ' ÑˆÐ²ÐµÐ¹Ñ†Ð°Ñ€ÑÑŒÐºÐ¸Ñ… Ñ„Ñ€Ð°Ð½ÐºÑ–Ð²';
         end if;
   ------------------------------------------------------------------
         if substr(fraction::varchar,1,2) in ('01','21','31','41','51','61','71','81','91') then
-          p_result := p_result || to_char(fraction, '00') || ' ñàíòèì';
+          p_result := p_result || to_char(fraction, '00') || ' ÑÐ°Ð½Ñ‚Ð¸Ð¼';
         elsif substr(fraction::varchar,1,2) in ('02','03','04','22','23','24','32','33','34',
                                                 '42','43','44','52','53','54','62','63','64',
                                                 '72','73','74','82','83','84','92','93','94') then
-          p_result := p_result || to_char(fraction, '00') || ' ñàíòèìè';
+          p_result := p_result || to_char(fraction, '00') || ' ÑÐ°Ð½Ñ‚Ð¸Ð¼Ð¸';
         else
-          p_result := p_result || to_char(fraction, '00') || ' ñàíòèìiâ';
+          p_result := p_result || to_char(fraction, '00') || ' ÑÐ°Ð½Ñ‚Ð¸Ð¼iÐ²';
         end if;
   ------------------------------------------------------------------
         elsif (upper(p_curr_code) = 'RUR') then
           CResult := OriginVal::varchar;
           l       := length(CResult);
         if ((l > 1) and ((substr(CResult, l - 1, 2))::numeric  > 10) and ((substr(CResult, l - 1, 2))::numeric  < 20)) then
-          p_result := p_result || 'ðîñ³éñüêèõ ðóáë³â';
+          p_result := p_result || 'Ñ€Ð¾ÑÑ–Ð¹ÑÑŒÐºÐ¸Ñ… Ñ€ÑƒÐ±Ð»Ñ–Ð²';
         elsif (substr(CResult, l, 1))::numeric  = 0 then
-          p_result := p_result || 'ðîñ³éñüêèõ ðóáë³â';
+          p_result := p_result || 'Ñ€Ð¾ÑÑ–Ð¹ÑÑŒÐºÐ¸Ñ… Ñ€ÑƒÐ±Ð»Ñ–Ð²';
         elsif (substr(CResult, l, 1))::numeric  = 1 then
-          p_result := p_result || 'ðîñ³éñüêèé ðóáåëü';
+          p_result := p_result || 'Ñ€Ð¾ÑÑ–Ð¹ÑÑŒÐºÐ¸Ð¹ Ñ€ÑƒÐ±ÐµÐ»ÑŒ';
         elsif ((substr(CResult, l, 1))::numeric  = 2) or ((substr(CResult, l, 1))::numeric  = 3) or ((substr(CResult, l, 1))::numeric  = 4) then
-          p_result := p_result || 'ðîñ³éñüêèõ ðóáëÿ';
+          p_result := p_result || 'Ñ€Ð¾ÑÑ–Ð¹ÑÑŒÐºÐ¸Ñ… Ñ€ÑƒÐ±Ð»Ñ';
         else
-          p_result := p_result || 'ðîñ³éñüêèõ ðóáë³â';
+          p_result := p_result || 'Ñ€Ð¾ÑÑ–Ð¹ÑÑŒÐºÐ¸Ñ… Ñ€ÑƒÐ±Ð»Ñ–Ð²';
         end if;
   ------------------------------------------------------------------
         if substr(fraction::varchar,1,2) in ('01','21','31','41','51','61','71','81','91') then
-          p_result := p_result || to_char(fraction, '00') || ' êîï³éêà';
+          p_result := p_result || to_char(fraction, '00') || ' ÐºÐ¾Ð¿Ñ–Ð¹ÐºÐ°';
         elsif substr(fraction::varchar,1,2) in ('02','03','04','22','23','24','32','33','34',
                                                 '42','43','44','52','53','54','62','63','64',
                                                 '72','73','74','82','83','84','92','93','94') then
-          p_result := p_result || to_char(fraction, '00') || ' êîï³éêè';
+          p_result := p_result || to_char(fraction, '00') || ' ÐºÐ¾Ð¿Ñ–Ð¹ÐºÐ¸';
         else
-          p_result := p_result || to_char(fraction, '00') || ' êîï³éîê';
+          p_result := p_result || to_char(fraction, '00') || ' ÐºÐ¾Ð¿Ñ–Ð¹Ð¾Ðº';
         end if;
   ------------------------------------------------------------------
         elsif (upper(p_curr_code) = 'RUB') then
           CResult := OriginVal::varchar;
           l       := length(CResult);
         if ((l > 1) and ((substr(CResult, l - 1, 2))::numeric  > 10) and ((substr(CResult, l - 1, 2))::numeric  < 20)) then
-          p_result := p_result || 'ðîñ³éñüêèõ ðóáë³â';
+          p_result := p_result || 'Ñ€Ð¾ÑÑ–Ð¹ÑÑŒÐºÐ¸Ñ… Ñ€ÑƒÐ±Ð»Ñ–Ð²';
         elsif (substr(CResult, l, 1))::numeric  = 0 then
-          p_result := p_result || 'ðîñ³éñüêèõ ðóáë³â';
+          p_result := p_result || 'Ñ€Ð¾ÑÑ–Ð¹ÑÑŒÐºÐ¸Ñ… Ñ€ÑƒÐ±Ð»Ñ–Ð²';
         elsif (substr(CResult, l, 1))::numeric  = 1 then
-          p_result := p_result || 'ðîñ³éñüêèé ðóáåëü';
+          p_result := p_result || 'Ñ€Ð¾ÑÑ–Ð¹ÑÑŒÐºÐ¸Ð¹ Ñ€ÑƒÐ±ÐµÐ»ÑŒ';
         elsif ((substr(CResult, l, 1))::numeric  = 2) or ((substr(CResult, l, 1))::numeric  = 3) or ((substr(CResult, l, 1))::numeric  = 4) then
-          p_result := p_result || 'ðîñ³éñüêèõ ðóáëÿ';
+          p_result := p_result || 'Ñ€Ð¾ÑÑ–Ð¹ÑÑŒÐºÐ¸Ñ… Ñ€ÑƒÐ±Ð»Ñ';
         else
-          p_result := p_result || 'ðîñ³éñüêèõ ðóáë³â';
+          p_result := p_result || 'Ñ€Ð¾ÑÑ–Ð¹ÑÑŒÐºÐ¸Ñ… Ñ€ÑƒÐ±Ð»Ñ–Ð²';
         end if;
   ------------------------------------------------------------------
         if substr(fraction::varchar,1,2) in ('01','21','31','41','51','61','71','81','91') then
-          p_result := p_result || to_char(fraction, '00') || ' êîï³éêà';
+          p_result := p_result || to_char(fraction, '00') || ' ÐºÐ¾Ð¿Ñ–Ð¹ÐºÐ°';
         elsif substr(fraction::varchar,1,2) in ('02','03','04','22','23','24','32','33','34',
                                                 '42','43','44','52','53','54','62','63','64',
                                                 '72','73','74','82','83','84','92','93','94') then
-          p_result := p_result || to_char(fraction, '00') || ' êîï³éêè';
+          p_result := p_result || to_char(fraction, '00') || ' ÐºÐ¾Ð¿Ñ–Ð¹ÐºÐ¸';
         else
-          p_result := p_result || to_char(fraction, '00') || ' êîï³éîê';
+          p_result := p_result || to_char(fraction, '00') || ' ÐºÐ¾Ð¿Ñ–Ð¹Ð¾Ðº';
         end if;
   ------------------------------------------------------------------
         else

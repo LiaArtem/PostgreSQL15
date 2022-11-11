@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION p_convert.str_amount_format(p_number numeric, p_count
  STABLE
 AS $function$
 DECLARE
-    -- Преобразование суммы в текстовый формат числа
+    -- РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ СЃСѓРјРјС‹ РІ С‚РµРєСЃС‚РѕРІС‹Р№ С„РѕСЂРјР°С‚ С‡РёСЃР»Р°
     p_n varchar(255);
     pos integer;
     p_num numeric;
@@ -22,14 +22,14 @@ BEGIN
     if p_count_comma = 5 then p_n := to_char(p_num,'999G999G999G990D00000'); end if;
     if p_count_comma > 5 or p_count_comma is null
     then
-       RAISE EXCEPTION '%', 'Количество знаков после запятой не может быль больше 5 или NULL !!!' USING ERRCODE = '45000';
+       RAISE EXCEPTION '%', 'РљРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°РєРѕРІ РїРѕСЃР»Рµ Р·Р°РїСЏС‚РѕР№ РЅРµ РјРѕР¶РµС‚ Р±С‹Р»СЊ Р±РѕР»СЊС€Рµ 5 РёР»Рё NULL !!!' USING ERRCODE = '45000';
     end if;
 
     p_n := replace(p_n,'.',chr(44));
     p_n := replace(p_n,chr(44),' ');
     p_n := trim(both p_n);
 
-    -- восстанавливаем последнюю запятую
+    -- РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїРѕСЃР»РµРґРЅСЋСЋ Р·Р°РїСЏС‚СѓСЋ
     pos := instr(p_n,' ',-1,1);
     if p_count_comma = 0 then p_n := p_n; end if;
     if p_count_comma <> 0 then p_n := substr(p_n,1,pos-1) || chr(44) || substr(p_n,pos+1,length(p_n)-pos); end if;

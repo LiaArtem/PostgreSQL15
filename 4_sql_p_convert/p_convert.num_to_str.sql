@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION p_convert.num_to_str(p_amount numeric)
  STABLE
 AS $function$
 DECLARE
-     -- Преобразование числа в текст
+     -- РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ С‡РёСЃР»Р° РІ С‚РµРєСЃС‚
      m_result   varchar(60);
      m_len      integer;
 

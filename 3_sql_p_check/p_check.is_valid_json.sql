@@ -3,7 +3,7 @@ CREATE OR REPLACE FUNCTION p_check.is_valid_json(p_text text)
  LANGUAGE plpgsql
 AS $function$
 DECLARE
-      -- Проверка валидности JSON
+      -- РџСЂРѕРІРµСЂРєР° РІР°Р»РёРґРЅРѕСЃС‚Рё JSON
       p_json json;
 
 begin

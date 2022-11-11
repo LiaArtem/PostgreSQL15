@@ -3,7 +3,7 @@
 -- DROP FUNCTION IF EXISTS p_interface.read_isin_secur(text);
 
 CREATE OR REPLACE FUNCTION p_interface.read_isin_secur(
-	p_format text)
+	p_format character varying)
     RETURNS SETOF p_interface.t_isin_secur 
     LANGUAGE 'plpgsql'
     COST 100

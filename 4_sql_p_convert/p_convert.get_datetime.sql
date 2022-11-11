@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION p_convert.get_datetime(p_text text)
  STABLE
 AS $function$
 DECLARE
-    -- Преобразование текста в дату и время
+    -- РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ С‚РµРєСЃС‚Р° РІ РґР°С‚Сѓ Рё РІСЂРµРјСЏ
     m_date timestamp;
 
 BEGIN

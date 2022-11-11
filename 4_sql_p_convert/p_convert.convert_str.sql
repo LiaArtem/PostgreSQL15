@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION p_convert.convert_str(p_text text, p_char_set_to char
  STABLE
 AS $function$
 begin
-   -- Преобразование теста из одной в другую кодировку
+   -- РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ С‚РµСЃС‚Р° РёР· РѕРґРЅРѕР№ РІ РґСЂСѓРіСѓСЋ РєРѕРґРёСЂРѕРІРєСѓ
    -- 'UTF8','WIN1251'	
       return convert_from(convert(p_text::bytea, p_char_set_from, p_char_set_to), 'UTF8'); 
   end;   

@@ -4,11 +4,11 @@ CREATE OR REPLACE FUNCTION p_convert.str_to_date(p_text character varying, p_for
  STABLE
 AS $function$
 begin
-	-- Преобразование теста в дату
+	-- РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ С‚РµСЃС‚Р° РІ РґР°С‚Сѓ
     return(to_date(trim(both p_text), p_format));
   exception when others
   then
-     RAISE EXCEPTION '%', 'Невозможно преобразовать в дату ='||p_text USING ERRCODE = '45000';
+     RAISE EXCEPTION '%', 'РќРµРІРѕР·РјРѕР¶РЅРѕ РїСЂРµРѕР±СЂР°Р·РѕРІР°С‚СЊ РІ РґР°С‚Сѓ ='||p_text USING ERRCODE = '45000';
   end;
 
 $function$

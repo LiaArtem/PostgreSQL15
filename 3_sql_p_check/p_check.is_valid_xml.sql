@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION p_check.is_valid_xml(p_text text)
  STABLE
 AS $function$
 DECLARE
-		-- Проверка валидности XML
+		-- РџСЂРѕРІРµСЂРєР° РІР°Р»РёРґРЅРѕСЃС‚Рё XML
         p_xml xml;
 
 BEGIN

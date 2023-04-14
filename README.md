@@ -5,55 +5,56 @@ Add JSON Data Type (table, jsonb_path_query, json_build_object)
 PostgreSQL 15 + Python 3.10
 IDE - DBeaver
 ---------------------------------------------------------------------------------
-Установка и настройка:
+Встановлення та налаштування:
 ---------------------------------------------------------------------------------
-1) Устанавливаем Python 3
-   - устанавливаем Python python-3.10.XXX-amd64.exe
-     -> Use admin privileges when installing py.exe - включить
-     -> Add python.exe to PATH - включить
+1) Встановлюємо Python 3
+   - встановлюємо Python python-3.10.XXX-amd64.exe
+     -> Use admin privileges when installing py.exe - увімкнути
+     -> Add python.exe to PATH - увімкнути
      -> !!!! Customize installation
      -> Next
-     -> Install Python 3.10 for all user - включить
+     -> Install Python 3.10 for all user - увімкнути
      -> Install
-     -> Disable MAX_LIMIT - выполнить.
-     -> Завершить
-   Перегрузить ПК.
+     -> Disable MAX_LIMIT – виконати.
+     -> Завершити
+   Перевантажити комп'ютер.
 
-2) Устанавливаем PostgreSQL 15 (пароль: 12345678)
-3) Разворачиваем базу данных:
-   - Для выполнения скриптов, настраиваем чтобы DB не запрашивала пароль.
-     - .\execute_sql_all\pg_hba_no_pwd\pg_hba.conf копируем и заменяем файл c:\Program Files\PostgreSQL\15\data\pg_hba.conf
-           (в файле METHOD ставим trust вместо scram-sha-256)
-     - выполняем скрипт .\execute_sql_all\execute_sql.bat
-     - .\execute_sql_all\pg_hba_orig\pg_hba.conf копируем и заменяем файл c:\Program Files\PostgreSQL\15\data\pg_hba.conf
-           (возвращаем обратно чтобы запрашивало пароль)
+2) Встановлюємо PostgreSQL 15 (пароль: 12345678)
 
-4) Создаем соединение в DBeaver
+3) Розгортаємо базу даних:
+   - Для виконання скриптів, налаштовуємо, щоб DB не запитувала пароль.
+     - .\execute_sql_all\pg_hba_no_pwd\pg_hba.conf копіюємо і замінюємо файл c:\Program Files\PostgreSQL\15\data\pg_hba.conf
+           (У файлі METHOD ставимо trust замість scram-sha-256)
+     - Виконуємо скрипт .\execute_sql_all\execute_sql.bat
+     - .\execute_sql_all\pg_hba_orig\pg_hba.conf копіюємо та замінюємо файл c:\Program Files\PostgreSQL\15\data\pg_hba.conf
+           (Повертаємо назад, щоб запитувало пароль)
+
+4) Створюємо з'єднання в DBeaver
    - хост: localhost
    - порт: 5432
-   - база данных: test_database
-   - пользователь: test_user
+   - база даних: test_database
+   - Користувач: test_user
    - пароль: 12345678
 
-5) Включаем отладку в PostgreSQL
+5) Включаємо налагодження в PostgreSQL
 
-   c:\Program Files\PostgreSQL\15\data\postgresql.conf правим файл - меняем
-   с
-    #shared_preload_libraries = '' # (change requires restart)
+   c:\Program Files\PostgreSQL\15\data\postgresql.conf правимо файл - міняємо
+   з
+    #shared_preload_libraries = ''# (change requires restart)
    на
     shared_preload_libraries = 'plugin_debugger' # (change requires restart)
-   - Перезагрузить сервер.
+   - Перезавантажити сервер.
 
----------------------------------------------------------------------------------
+-------------------------------------------------- -------------------------------
 Backup (pgAdmin 4)
----------------------------------------------------------------------------------
-   - Запускаем pgAdmin 4
+-------------------------------------------------- -------------------------------
+   - Запускаємо pgAdmin 4
    - Servers -> Dashboard -> Configure pgAdmin -> Patch -> Binary patch
-   - Поле PostgreSQL Binary Path = C:\Program Files\PostgreSQL\15\bin\
-   - На базе выполнить Backup
+   - Поле PostgreSQL Binary Path = C: Program Files PostgreSQL 15 bin
+   - На базі виконати Backup
 
----------------------------------------------------------------------------------
+-------------------------------------------------- -------------------------------
 Backup (DBeaver)
----------------------------------------------------------------------------------
-   - На базе правой клавишей -> Tools -> Backup
-   - Хранится в C:\Users\Admin\dump-test_database-202210142302.sql (пример)
+-------------------------------------------------- -------------------------------
+   - На базі правою клавішею -> Tools -> Backup
+   - Зберігається в C:\Users\Admin\dump-test_database-202210142302.sql (приклад)

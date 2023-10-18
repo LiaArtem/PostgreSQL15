@@ -24,6 +24,8 @@ set sql_source="d:\Прочие\Project\Project PostgreSQL\Project PostgreSQL 15"
 %psql_source% -U test_user -d test_database --log-file=%sql_source%\execute_sql_all\log.txt --file=%sql_source%\4_sql_p_convert\p_convert.str_interest.sql
 %psql_source% -U test_user -d test_database --log-file=%sql_source%\execute_sql_all\log.txt --file=%sql_source%\4_sql_p_convert\p_convert.str_to_date.sql
 %psql_source% -U test_user -d test_database --log-file=%sql_source%\execute_sql_all\log.txt --file=%sql_source%\4_sql_p_convert\p_convert.str_to_num.sql
+%psql_source% -U test_user -d test_database --log-file=%sql_source%\execute_sql_all\log.txt --file=%sql_source%\4_sql_p_convert\p_convert.str_month.sql
+%psql_source% -U test_user -d test_database --log-file=%sql_source%\execute_sql_all\log.txt --file=%sql_source%\4_sql_p_convert\p_convert.str_days.sql
 
 %psql_source% -U test_user -d test_database --log-file=%sql_source%\execute_sql_all\log.txt --file=%sql_source%\5_sql_p_interface\1_CREATE_SCHEMA_p_interface.sql
 %psql_source% -U test_user -d test_database --log-file=%sql_source%\execute_sql_all\log.txt --file=%sql_source%\5_sql_p_interface\2_p_interface.t_erb_minfin.sql
